@@ -1,0 +1,40 @@
+header {
+    background-color: #1c2b35;
+    color: #ffffff;
+}
+nav {
+    width: 85%;
+    height: 80px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.list a {
+    text-decoration: none;
+    color: #ffffff;
+    margin-left: 36px;
+    font-size: 17px;
+}
+.list a:hover {
+    color: orange;
+}
+
+@media only screen and (max-width: 688px) {
+    nav {
+        width: 95%;
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px;
+    }
+    .list a {
+        display: block;
+        text-decoration: none;
+        color: #ffffff;
+    }
+    .list a:hover {
+        color: orange;
+    }
+}
