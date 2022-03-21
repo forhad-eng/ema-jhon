@@ -16,7 +16,7 @@
 }
 .product-info p {
     margin-bottom: 0;
-    margin-top: 8px;
+    margin-top: 6px;
 }
 .product-name {
     font-family: 'Lato';
@@ -28,10 +28,10 @@
     font-size: 17px;
 }
 .product-manufact {
-    font-size: 12px;
+    font-size: 14px;
 }
 .product-rating {
-    font-size: 12px;
+    font-size: 14px;
 }
 .product button {
     width: 100%;
