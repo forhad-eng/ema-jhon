@@ -5,44 +5,46 @@ import Product from '../Product/Product'
 import './Shop.css'
 
 const Shop = () => {
-    const [cart, setCart] = useState([])
+    let price = 0
+    const charge = 100
     const [products, setProducts] = useState([])
+    const [cart, setCart] = useState([])
+
     useEffect(() => {
         fetch('./products.json')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
 
-    const addToCartHandler = product => {
+    const addToCartHandle = product => {
         const newCart = [...cart, product]
         setCart(newCart)
     }
-    let price = 0
-    const charge = 100
+
     return (
-        <div className="shop-container">
+        <div className="container">
             <div className="product-container">
                 {products.map(product => (
-                    <Product product={product} addHandler={addToCartHandler}></Product>
+                    <Product product={product} key={product.id} cartHandler={addToCartHandle}></Product>
                 ))}
             </div>
             <div className="cart-container">
                 <p className="order-summary">Order Summary</p>
                 <div className="cart-info">
-                    <p>Selected Item: {cart.length}</p>
+                    <p>Selected Items: {cart.length}</p>
                     <p>
-                        {cart.forEach(item => (price = price + item.price))}
+                        {cart.forEach(item => (price += item.price))}
                         Total Price: {price}
                     </p>
                     <p>Total Shipping Charge: {charge}</p>
                     <p>Tax: {(price * 0.2).toFixed(2)}</p>
-                    <p>Grand Total: {price + price * 0.2 + charge}</p>
+                    <p>Grand Total: {(price + price * 0.2 + charge).toFixed(2)}</p>
                 </div>
-                <button onClick={() => window.location.reload()} className="clr-cart">
+                <button onClick={() => window.location.reload()} className="clear-btn">
                     Clear Cart <FontAwesomeIcon icon={faTrashCan}></FontAwesomeIcon>
                 </button>
-                <button className="rmv-cart">
-                    Remove Cart <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
+                <button className="remove-btn">
+                    Review Order <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
                 </button>
             </div>
         </div>

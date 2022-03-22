@@ -1,6 +1,5 @@
 header {
-    background-color: #1c2b35;
-    color: #ffffff;
+    background: #1c2b35;
 }
 nav {
     width: 85%;
@@ -10,31 +9,20 @@ nav {
     justify-content: space-between;
     align-items: center;
 }
-.list a {
+
+nav a {
     text-decoration: none;
-    color: #ffffff;
     margin-left: 36px;
     font-size: 17px;
+    line-height: 20px;
+    letter-spacing: 0.005em;
+    color: #ffffff;
 }
-.list a:hover {
+nav a:hover {
     color: orange;
 }
-
-@media only screen and (max-width: 688px) {
-    nav {
-        width: 95%;
-        height: 80px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px;
-    }
-    .list a {
+@media only screen and (max-width: 480px) {
+    nav a {
         display: block;
-        text-decoration: none;
-        color: #ffffff;
-    }
-    .list a:hover {
-        color: orange;
     }
 }
