@@ -21,4 +21,9 @@ const getStoredCart = () => {
     return shoppingCart
 }
 
-export { addToCart, getStoredCart as getCart }
+const removeCart = () => {
+    localStorage.removeItem('shopping-cart')
+    window.location.reload()
+}
+
+export { addToCart, getStoredCart as getCart, removeCart }
