@@ -1,12 +1,10 @@
-import { faArrowRight, faTrashCan } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
+import Cart from '../Cart/Cart'
 import Product from '../Product/Product'
+import { addToCart, getCart } from '../utilities/localStorage'
 import './Shop.css'
 
 const Shop = () => {
-    let price = 0
-    const charge = 100
     const [products, setProducts] = useState([])
     const [cart, setCart] = useState([])
 
@@ -16,9 +14,32 @@ const Shop = () => {
             .then(data => setProducts(data))
     }, [])
 
-    const addToCartHandle = product => {
-        const newCart = [...cart, product]
+    useEffect(() => {
+        const newCart = []
+        const savedCart = getCart()
+        for (const prop in savedCart) {
+            const item = products.find(product => product.id === prop)
+            if (item) {
+                item.quantity = savedCart[prop]
+                newCart.push(item)
+            }
+        }
         setCart(newCart)
+    }, [products])
+
+    const addToCartHandle = selectedProduct => {
+        let newCart = []
+        const exits = cart.find(product => product.id === selectedProduct.id)
+        if (!exits) {
+            selectedProduct.quantity = 1
+            newCart = [...cart, selectedProduct]
+        } else {
+            selectedProduct.quantity += 1
+            const rest = cart.filter(product => product.id !== selectedProduct.id)
+            newCart = [...rest, selectedProduct]
+        }
+        setCart(newCart)
+        addToCart(selectedProduct.id)
     }
 
     return (
@@ -29,23 +50,7 @@ const Shop = () => {
                 ))}
             </div>
             <div className="cart-container">
-                <p className="order-summary">Order Summary</p>
-                <div className="cart-info">
-                    <p>Selected Items: {cart.length}</p>
-                    <p>
-                        {cart.forEach(item => (price += item.price))}
-                        Total Price: {price}
-                    </p>
-                    <p>Total Shipping Charge: {charge}</p>
-                    <p>Tax: {(price * 0.2).toFixed(2)}</p>
-                    <p>Grand Total: {(price + price * 0.2 + charge).toFixed(2)}</p>
-                </div>
-                <button onClick={() => window.location.reload()} className="clear-btn">
-                    Clear Cart <FontAwesomeIcon icon={faTrashCan}></FontAwesomeIcon>
-                </button>
-                <button className="remove-btn">
-                    Review Order <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
-                </button>
+                <Cart cart={cart}></Cart>
             </div>
         </div>
     )
