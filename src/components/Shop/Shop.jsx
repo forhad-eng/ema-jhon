@@ -1,31 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import useCart from '../../hooks/useCart'
+import useProducts from '../../hooks/useProducts'
+import { addToCart } from '../../utilities/localStorage'
 import Cart from '../Cart/Cart'
 import Product from '../Product/Product'
-import { addToCart, getCart } from '../utilities/localStorage'
 import './Shop.css'
+import CustomLink from '../CustomLink/CustomLink'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Shop = () => {
-    const [products, setProducts] = useState([])
-    const [cart, setCart] = useState([])
-
-    useEffect(() => {
-        fetch('./products.json')
-            .then(res => res.json())
-            .then(data => setProducts(data))
-    }, [])
-
-    useEffect(() => {
-        const newCart = []
-        const savedCart = getCart()
-        for (const prop in savedCart) {
-            const item = products.find(product => product.id === prop)
-            if (item) {
-                item.quantity = savedCart[prop]
-                newCart.push(item)
-            }
-        }
-        setCart(newCart)
-    }, [products])
+    const [products, setProducts] = useProducts()
+    const [cart, setCart] = useCart(products)
 
     const addToCartHandle = selectedProduct => {
         let newCart = []
@@ -50,7 +36,13 @@ const Shop = () => {
                 ))}
             </div>
             <div className="cart-container">
-                <Cart cart={cart}></Cart>
+                <Cart cart={cart}>
+                    <CustomLink to="/order">
+                        <button className="remove-btn">
+                            Review Order <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
+                        </button>
+                    </CustomLink>
+                </Cart>
             </div>
         </div>
     )

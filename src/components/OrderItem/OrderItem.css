@@ -1,0 +1,43 @@
+.item-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 570px;
+    height: 80px;
+    margin: 0 auto;
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 7px;
+}
+
+.item-container {
+    display: flex;
+}
+
+.item-container img {
+    width: 80px;
+    border-radius: 8px;
+}
+
+.item-info {
+    margin-left: 10px;
+}
+
+.item-info p,
+h4 {
+    margin: 0;
+}
+
+.item-dlt-btn {
+    width: 55px;
+    height: 55px;
+    background: rgba(235, 87, 87, 0.3);
+    color: #eb5757;
+    border: none;
+    border-radius: 50%;
+    font-size: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}

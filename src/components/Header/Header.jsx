@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import CustomLink from '../CustomLink/CustomLink'
 import logo from '../images/Logo.svg'
 import './Header.css'
 
@@ -6,12 +8,14 @@ const Header = () => {
     return (
         <header>
             <nav>
-                <img src={logo} alt="" />
-                <div>
-                    <a href="/Order">Order</a>
-                    <a href="/review">Order review</a>
-                    <a href="/inventory">Manage Inventory</a>
-                    <a href="/about">About</a>
+                <Link to="/">
+                    <img src={logo} alt="" />
+                </Link>
+                <div className="navigation">
+                    <CustomLink to="/shop">Shop</CustomLink>
+                    <CustomLink to="/order">Order</CustomLink>
+                    <CustomLink to="/inventory">Inventory</CustomLink>
+                    <CustomLink to="/about">About</CustomLink>
                 </div>
             </nav>
         </header>

@@ -10,17 +10,14 @@ nav {
     align-items: center;
 }
 
-nav a {
-    text-decoration: none;
-    margin-left: 36px;
+nav .navigation {
+    display: flex;
+    gap: 20px;
     font-size: 17px;
     line-height: 20px;
     letter-spacing: 0.005em;
-    color: #ffffff;
 }
-nav a:hover {
-    color: orange;
-}
+
 @media only screen and (max-width: 480px) {
     nav a {
         display: block;
