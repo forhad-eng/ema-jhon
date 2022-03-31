@@ -1,6 +1,8 @@
+import { css } from '@emotion/react'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { ScaleLoader } from 'react-spinners'
 import useCart from '../../hooks/useCart'
 import useProducts from '../../hooks/useProducts'
 import { addToCart, clearCart } from '../../utilities/localStorage'
@@ -8,6 +10,13 @@ import Cart from '../Cart/Cart'
 import CustomLink from '../CustomLink/CustomLink'
 import Product from '../Product/Product'
 import './Shop.css'
+
+const override = css`
+    display: flex;
+    justify-content: center;
+    margin: 180px 0;
+    border-color: red;
+`
 
 const Shop = () => {
     const [products, setProducts] = useProducts()
@@ -33,7 +42,9 @@ const Shop = () => {
         setCart([])
     }
 
-    return (
+    return products.length === 0 ? (
+        <ScaleLoader loading={true} css={override} size={60} />
+    ) : (
         <div className="container">
             <div className="product-container">
                 {products.map(product => (
