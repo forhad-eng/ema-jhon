@@ -1,13 +1,13 @@
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import useCart from '../../hooks/useCart'
 import useProducts from '../../hooks/useProducts'
-import { addToCart } from '../../utilities/localStorage'
+import { addToCart, clearCart } from '../../utilities/localStorage'
 import Cart from '../Cart/Cart'
+import CustomLink from '../CustomLink/CustomLink'
 import Product from '../Product/Product'
 import './Shop.css'
-import CustomLink from '../CustomLink/CustomLink'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Shop = () => {
     const [products, setProducts] = useProducts()
@@ -28,15 +28,20 @@ const Shop = () => {
         addToCart(selectedProduct.id)
     }
 
+    const clearCartHandler = () => {
+        clearCart()
+        setCart([])
+    }
+
     return (
         <div className="container">
             <div className="product-container">
                 {products.map(product => (
-                    <Product product={product} key={product.id} cartHandler={addToCartHandle}></Product>
+                    <Product key={product.id} product={product} cartHandler={addToCartHandle}></Product>
                 ))}
             </div>
             <div className="cart-container">
-                <Cart cart={cart}>
+                <Cart cart={cart} clearCart={clearCartHandler}>
                     <CustomLink to="/order">
                         <button className="remove-btn">
                             Review Order <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>

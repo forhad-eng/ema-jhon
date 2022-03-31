@@ -29,8 +29,8 @@ const removeItem = productID => {
     }
 }
 
-const removeCart = () => {
+const clearCart = () => {
     localStorage.removeItem('shopping-cart')
 }
 
-export { addToCart, getStoredCart as getCart, removeCart, removeItem }
+export { addToCart, getStoredCart as getCart, clearCart, removeItem }

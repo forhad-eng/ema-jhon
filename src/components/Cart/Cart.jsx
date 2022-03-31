@@ -1,9 +1,8 @@
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import { removeCart } from '../../utilities/localStorage'
 
-const Cart = ({ cart, children }) => {
+const Cart = ({ cart, clearCart, children }) => {
     let quantity = 0
     let price = 0
     let charge = 0
@@ -22,7 +21,7 @@ const Cart = ({ cart, children }) => {
                 <p>Tax: {(price * 0.2).toFixed(2)}</p>
                 <p>Grand Total: {(price + price * 0.2 + charge).toFixed(2)}</p>
             </div>
-            <button onClick={removeCart} className="clear-btn">
+            <button onClick={clearCart} className="clear-btn">
                 Clear Cart <FontAwesomeIcon icon={faTrashCan}></FontAwesomeIcon>
             </button>
             {children}
