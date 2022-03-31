@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
 import Home from './components/Home/Home'
 import Inventory from './components/Inventory/Inventory'
+import NotFound from './components/NotFound/NotFound'
 import Order from './components/Order/Order'
 import Shop from './components/Shop/Shop'
 
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/order" element={<Order />} />
                 <Route path="/inventory" element={<Inventory />} />
                 <Route path="/about" element={<About />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer></Footer>
         </>
