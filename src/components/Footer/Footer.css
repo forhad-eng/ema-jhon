@@ -1,0 +1,18 @@
+footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    place-items: center;
+    margin-top: calc(100vh - 388px);
+    padding: 50px 20px;
+    background: #131a22;
+}
+footer div {
+    display: flex;
+    flex-direction: column;
+}
+footer div a {
+    text-decoration: none;
+    margin-bottom: 15px;
+    color: #ddd;
+}
