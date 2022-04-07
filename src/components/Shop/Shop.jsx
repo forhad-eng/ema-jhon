@@ -19,7 +19,7 @@ const override = css`
 `
 
 const Shop = () => {
-    const [products, setProducts] = useProducts()
+    const [products] = useProducts()
     const [cart, setCart] = useCart(products)
 
     const addToCartHandle = selectedProduct => {
@@ -52,7 +52,7 @@ const Shop = () => {
                 ))}
             </div>
             <div className="cart-container">
-                <Cart cart={cart} clearCart={clearCartHandler}>
+                <Cart cart={cart} clearCartHandler={clearCartHandler}>
                     <CustomLink to="/order">
                         <button className="remove-btn">
                             Review Order <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>

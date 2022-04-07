@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { ScaleLoader } from 'react-spinners'
 import useCart from '../../hooks/useCart'
 import useProducts from '../../hooks/useProducts'
-import { removeItem } from '../../utilities/localStorage'
+import { clearCart, removeItem } from '../../utilities/localStorage'
 import Cart from '../Cart/Cart'
 import CustomLink from '../CustomLink/CustomLink'
 import OrderItem from '../OrderItem/OrderItem'
@@ -19,7 +19,7 @@ const override = css`
 `
 
 const Order = () => {
-    const [products, setProducts] = useProducts()
+    const [products] = useProducts()
     const [cart, setCart] = useCart(products)
     let [loading, setLoading] = useState(true)
 
@@ -33,6 +33,11 @@ const Order = () => {
         removeItem(productID)
     }
 
+    const clearCartHandler = () => {
+        clearCart()
+        setCart([])
+    }
+
     return loading ? (
         <ScaleLoader loading={loading} css={override} size={60} />
     ) : (
@@ -43,7 +48,7 @@ const Order = () => {
                 ))}
             </div>
             <div className="cart-container">
-                <Cart cart={cart}>
+                <Cart cart={cart} clearCartHandler={clearCartHandler}>
                     <CustomLink to="/inventory">
                         <button className="remove-btn">
                             Proceed Checkout <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
