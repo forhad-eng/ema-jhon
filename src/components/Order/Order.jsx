@@ -49,9 +49,9 @@ const Order = () => {
             </div>
             <div className="cart-container">
                 <Cart cart={cart} clearCartHandler={clearCartHandler}>
-                    <CustomLink to="/inventory">
+                    <CustomLink to="/shipping">
                         <button className="remove-btn">
-                            Proceed Checkout <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
+                            Proceed Shipping <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
                         </button>
                     </CustomLink>
                 </Cart>
