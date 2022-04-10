@@ -36,15 +36,20 @@ const Register = () => {
                 <form onSubmit={loginFromHandler}>
                     <label htmlFor="email">Email</label>
                     <br />
-                    <input onBlur={e => setEmail(e.target.value)} type="email" name="email" />
+                    <input onBlur={e => setEmail(e.target.value)} type="email" name="email" required />
                     <br />
                     <label htmlFor="password">Password</label>
                     <br />
-                    <input onBlur={e => setPass(e.target.value)} type="password" name="password" />
+                    <input onBlur={e => setPass(e.target.value)} type="password" name="password" required />
                     <br />
                     <label htmlFor="confirm-password">Confirm Password</label>
                     <br />
-                    <input onBlur={e => setConfirmPass(e.target.value)} type="password" name="confirm-password" />
+                    <input
+                        onBlur={e => setConfirmPass(e.target.value)}
+                        type="password"
+                        name="confirm-password"
+                        required
+                    />
                     <br />
                     {err && <p style={{ color: 'red', margin: '0', marginBottom: '5px' }}>{err}</p>}
                     {error && <p style={{ color: 'red', margin: '0', marginBottom: '5px' }}>{error.message}</p>}

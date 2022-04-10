@@ -16,13 +16,9 @@ const Login = () => {
     const location = useLocation()
     const navigate = useNavigate()
 
-    console.log(user)
-
     const from = location.state?.from?.pathname || '/'
 
-    if (user?.emailVerified) {
-        navigate(from, { replace: true })
-    }
+    user?.emailVerified && navigate(from, { replace: true })
 
     const loginHandler = e => {
         e.preventDefault()
