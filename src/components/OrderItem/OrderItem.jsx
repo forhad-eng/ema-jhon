@@ -19,7 +19,7 @@ const OrderItem = ({ product, removeHandler }) => {
                 </div>
             </div>
             <div>
-                <button onClick={() => removeHandler(product.id)} className="item-dlt-btn">
+                <button onClick={() => removeHandler(product._id)} className="item-dlt-btn">
                     <FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon>
                 </button>
             </div>

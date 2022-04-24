@@ -8,6 +8,15 @@
     row-gap: 30px;
     margin: 100px 0;
 }
+.pagenation button {
+    margin-right: 10px;
+    padding: 8px;
+    border-radius: 5px;
+}
+.selected {
+    background-color: orange;
+    color: white;
+}
 .cart-container {
     height: 100vh;
     position: sticky;
